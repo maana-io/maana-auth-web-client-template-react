@@ -8,6 +8,10 @@ User must login in order to see 'protected' page.
 Once user is authenticated, they can logout.
 Once logout is clicked, the user will be immediately redirected to login.
 
+## Prerequisites
+- A client must exist on the authentication server that can provide an OAuth 'implicit flow'.
+- There must be a registered redirect URL on the client configured on the authetication server (see 'Understanding OAuth Implicity Flow and Redirect URL security' section).
+
 ## Env variables that must be set
 
 These must be set for the web app to communicate with the auth provider. (Auth provodier will always be set to either 'auth0' or 'keycloak')

@@ -1,14 +1,14 @@
-import { Callback, Home, Login } from ".";
+import { Callback, Home, Login, Logout } from ".";
 import { Redirect, Route, Switch, useLocation } from "react-router-dom";
 
 import React from "react";
-import { getUserAuthClient } from "../util/Auth";
+import { useAuthContext } from "./Auth";
 
 export function App() {
   const location = useLocation();
-  const userAuth = getUserAuthClient();
-  const isActive = userAuth.isActive();
-  const isAuthenticated = userAuth.isAuthenticated();
+  const { authClient } = useAuthContext();
+  const isActive = authClient.isActive();
+  const isAuthenticated = authClient.isAuthenticated();
 
   return (
     <div>
@@ -30,8 +30,7 @@ export function App() {
             path="/logout"
             exact
             render={() => {
-              userAuth.logout();
-              return null;
+              return <Logout />;
             }}
           />
 
@@ -46,13 +45,20 @@ export function App() {
         </Switch>
       ) : (
         <Switch>
+          {/* Display the home page to the user */}
           <Route path="/" exact render={() => <Home />} />
+
+          {/*
+            TODO: Add additional routes here for the different pages the user
+              can visit
+          */}
+
+          {/* if the user is trying to logout, then log them out */}
           <Route
             path="/logout"
             exact
             render={() => {
-              userAuth.logout();
-              return null;
+              return <Logout />;
             }}
           />
         </Switch>

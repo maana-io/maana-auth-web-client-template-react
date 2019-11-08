@@ -26,6 +26,7 @@ export function AuthContextProvider({ children, authClient }) {
     <AuthContext.Provider
       value={{
         ...authContext,
+        authClient,
         authHeader: UserContext.getAuthHeader()
       }}
     >

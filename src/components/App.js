@@ -61,6 +61,12 @@ export function App() {
               return <Logout />;
             }}
           />
+
+          {/*
+            TODO: Add a listener to authClient.onInactivityListeners to display
+              a warning dialog when the user is about to be automatically logged
+              out of the application.
+          */}
         </Switch>
       )}
     </div>

@@ -1,7 +1,6 @@
 import BaseUserAuth, { RENEW_TOKEN_TIMER_OFFSET } from "./BaseUserAuth";
 
 import KeyCloak from "keycloak-js";
-require("dotenv").config();
 
 export default class KeyCloakUserAuth extends BaseUserAuth {
   constructor() {

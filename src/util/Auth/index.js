@@ -1,6 +1,5 @@
 import Auth0UserAuth from "./Auth0UserAuth";
 import KeyCloakUserAuth from "./KeyCloakUserAuth";
-require("dotenv").config();
 
 let authClient = null;
 

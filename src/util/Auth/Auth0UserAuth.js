@@ -20,7 +20,7 @@ export default class Auth0UserAuth extends BaseUserAuth {
         container,
         avatar: null,
         theme: {
-          logo: process.env.PUBLIC_URL + "/logo-sm.png",
+          logo: process.env.PUBLIC_URL + "/logo192.png",
           primaryColor: "#2195f3"
         },
         autoClose: true,

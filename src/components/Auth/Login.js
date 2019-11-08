@@ -1,50 +1,16 @@
-import PropTypes from "prop-types";
-import React from "react";
-import { Redirect } from "react-router-dom";
-import { getUserAuthClient } from "../../util/Auth";
-import styled from "styled-components";
+import React, { useEffect } from "react";
 
-const Root = styled.div`
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
+import { useAuthContext } from "./AuthContext";
+import { useLocation } from "react-router-dom";
 
-  /* center content (form) in screen */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+export function Login() {
+  const location = useLocation();
+  const { authClient } = useAuthContext();
 
-export class Login extends React.Component {
-  state = {
-    redirectToReferrer: false
-  };
-
-  handleLogin = user => {
-    this.setState({ redirectToReferrer: true });
-  };
-
-  render() {
-    const { location } = this.props;
-    const loc = location ? location.state : { from: { pathname: "/" } };
-    const { from } = loc || { from: { pathname: "/" } };
-
-    if (this.state.redirectToReferrer) {
-      return <Redirect to={from} />;
-    }
-
+  useEffect(() => {
     const startingUrl = location && location.state ? location.state.from : "/";
+    authClient.login(startingUrl);
+  }, [authClient, location]);
 
-    console.log("starting url", startingUrl);
-
-    return <Root>{getUserAuthClient().login(startingUrl)}</Root>;
-  }
+  return <div />;
 }
-
-Login.propTypes = {
-  location: PropTypes.object
-};

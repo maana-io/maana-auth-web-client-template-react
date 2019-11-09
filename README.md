@@ -32,7 +32,7 @@ An example for keycloak:
 
 ## Understanding OAuth Implicit Flow and Redirect URL security
 
-In order for OAuth implicit flow to be secure. The redirect URL given to the auth
+In order for OAuth implicit flow to be secure, the redirect URL given to the auth
 provider during login (where the token will be sent back to) MUST be registered with that auth provider ahead of time. If it is not, it should consider the request invalid and not return the token.
 
 This is important to note here--this app will not be able to login unless your auth0 or keycloak client has this app's URL added to its list of valid redirect URLs. If you're managing keycloak or auth0 in house, you will need to configure this yourself, otherwise will need to contact the entity managing your auth, and have them add the redirect URL. Please research this, as there are many ways to provide greater flexibility or rigidity around the URLs.
